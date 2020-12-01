@@ -32,7 +32,7 @@ stage('Docker Build and Tag') {
   stage('Publish image to Docker Hub') {
           
             steps {
-          withCredentials([usernamePassword(credentialsId: 'thanh829', passwordVariable: '123456789', usernameVariable: 'thanh829')]){
+          withCredentials([usernamePassword(credentialsId: 'thanh829', passwordVariable: '123456789', usernameVariable: 'leethanh829@gmail.com')]){
           sh  'sudo docker push thanh829/demo-docker-jenkins:latest'
         //  sh  'docker push nikhilnidhi/samplewebapp:$BUILD_NUMBER' 
         }
