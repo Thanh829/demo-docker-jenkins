@@ -1,5 +1,13 @@
 version: '3.1'
 services:
+ postgresqldb:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=webservice
   app:
     container_name: demo-docker
     image: demo-docker
@@ -8,11 +16,4 @@ services:
       - "8087:8087"
     depends_on:
       - postgresqldb
-  postgresqldb:
-    image: postgres
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=webservice
+ 
