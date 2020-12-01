@@ -22,8 +22,8 @@ pipeline {
 stage('Docker Build and Tag') {
            steps {
               
-                sh 'docker build -t demo-docker-jenkins:latest .' 
-                sh 'docker tag demo-docker-jenkins thanh829/demo-docker-jenkins:latest'
+                sh 'sudo docker build -t demo-docker-jenkins:latest .' 
+                sh 'sudo docker tag demo-docker-jenkins thanh829/demo-docker-jenkins:latest'
                 //sh 'docker tag samplewebapp nikhilnidhi/samplewebapp:$BUILD_NUMBER'
                
           }
@@ -33,7 +33,7 @@ stage('Docker Build and Tag') {
           
             steps {
         withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
-          sh  'docker push thanh829/demo-docker-jenkins:latest'
+          sh  'sudo docker push thanh829/demo-docker-jenkins:latest'
         //  sh  'docker push nikhilnidhi/samplewebapp:$BUILD_NUMBER' 
         }
                   
@@ -44,7 +44,7 @@ stage('Docker Build and Tag') {
              
             steps 
    {
-                sh "docker run -d -p 8003:8080 thanh829/demo-docker-jenkins"
+                sh "sudo docker run -d -p 8003:8080 thanh829/demo-docker-jenkins"
  
             }
         }
