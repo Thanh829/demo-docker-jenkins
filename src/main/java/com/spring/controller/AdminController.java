@@ -55,7 +55,28 @@ public class AdminController {
 
 	@Autowired
 	private jwtUtil jwtutil;
-
+	int num=0;
+	
+	@GetMapping("/create")
+	public Product TestMethod()
+	{
+		Product prod = new Product();
+		prod.setDescription("this is product "+ num++);
+		prod.setPrice(2.0);
+		prod.setProductname("product " +num);
+		prod.setQuantity(1);
+		prod.setProductimage(null);
+		
+		return prodRepo.save(prod);
+	}
+	@GetMapping("/all")
+	public List<Product> TestMethod2()
+	{
+		
+		
+		return prodRepo.findAll();
+	}
+	
 	@PostMapping("/verify")
 	public ResponseEntity<serverResp> verifyUser(@Valid @RequestBody HashMap<String, String> credential) {
 		String email = "";
