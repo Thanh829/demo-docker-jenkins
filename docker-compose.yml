@@ -5,8 +5,8 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=ntrongkhanh
+      - POSTGRES_PASSWORD=ntrongkhanh
+      - POSTGRES_USER=postgres
       - POSTGRES_DB=webservice
   app:
     container_name: springboot-postgresql
