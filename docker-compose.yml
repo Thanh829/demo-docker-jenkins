@@ -1,19 +1,18 @@
 version: '3.1'
 services:
+  app:
+    container_name: springboot-postgresql
+    image: springboot-postgresql
+    build: ./
+    ports:
+      - "8087:8087"
+    depends_on:
+      - postgresqldb
   postgresqldb:
     image: postgres
     ports:
       - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=postgres
+      - POSTGRES_USER=ntrongkhanh
       - POSTGRES_DB=webservice
-  app:
-    container_name: demo-docker
-    image: demo-docker
-    build: .
-    ports:
-      - "8087:8087"
-    depends_on:
-      - postgresqldb
- 
